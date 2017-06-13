@@ -1,0 +1,36 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2015.04.19.13.18.19;	author tmlz5d;	state Exp;
+branches;
+next	;
+
+
+desc
+@shell header file and function prototype
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@
+#include "get_path.h"
+
+int pid;
+int sh( int argc, char **argv, char **envp);
+char *which(char *command, struct pathelement *pathlist);
+char *where(char *command, struct pathelement *pathlist);
+void list ( char *dir );
+void printenv(char **envp);
+
+#define PROMPTMAX 32
+#define MAXARGS 10
+@
