@@ -1,0 +1,76 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2015.04.29.19.45.34;	author tmlz5d;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2015.04.20.23.09.39;	author tmlz5d;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2015.04.20.23.07.51;	author tmlz5d;	state Exp;
+branches;
+next	;
+
+
+desc
+@given Makefile
+@
+
+
+1.3
+log
+@cleaned up and tailored to project
+@
+text
+@CC=gcc
+
+mysh: sh.o main.c 
+	$(CC) -g main.c sh.o -o mysh
+
+sh.o: sh.c sh.h
+	$(CC) -g -c sh.c
+
+clean:
+	rm -rf sh.o mysh
+@
+
+
+1.2
+log
+@removed comments
+@
+text
+@a1 1
+#CC=gcc -Wall
+d3 2
+a4 3
+mysh: sh.o get_path.o main.c 
+	$(CC) -g main.c sh.o get_path.o -o mysh
+#	$(CC) -g main.c sh.o get_path.o bash_getcwd.o -o mysh
+a8 3
+get_path.o: get_path.c get_path.h
+	$(CC) -g -c get_path.c
+
+d10 1
+a10 1
+	rm -rf sh.o get_path.o mysh
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@a0 1
+# choose your compiler
+@

@@ -1,0 +1,94 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@ * @;
+
+
+1.4
+date	2015.05.02.17.28.53;	author tmlz5d;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2015.04.29.19.46.35;	author tmlz5d;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2015.04.28.14.35.06;	author tmlz5d;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2015.04.20.21.01.34;	author tmlz5d;	state Exp;
+branches;
+next	;
+
+
+desc
+@shell example header file
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <signal.h>
+#define MAX 512
+
+int getcmd (char *s, char *buf);
+int runcmd (char *cmd);
+void handle_ctd(int sig);
+@
+
+
+1.3
+log
+@cleaned up
+@
+text
+@d10 1
+@
+
+
+1.2
+log
+@cleaned up for readability
+@
+text
+@d1 6
+a6 3
+#include "get_path.h"
+#define PROMPTMAX 32
+#define MAXARGS 10
+d8 2
+a9 6
+int pid;
+int sh( int argc, char **argv, char **envp);
+char *which(char *command, struct pathelement *pathlist);
+char *where(char *command, struct pathelement *pathlist);
+void list ( char *dir );
+void printenv(char **envp);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@a0 1
+
+d2 2
+a10 3
+
+#define PROMPTMAX 32
+#define MAXARGS 10
+@

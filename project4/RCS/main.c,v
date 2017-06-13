@@ -1,0 +1,142 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@ * @;
+
+
+1.4
+date	2015.05.02.17.27.46;	author tmlz5d;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2015.04.29.19.46.51;	author tmlz5d;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2015.04.28.14.31.21;	author tmlz5d;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2015.04.20.21.02.23;	author tmlz5d;	state Exp;
+branches;
+next	;
+
+
+desc
+@example main program
+@
+
+
+1.4
+log
+@sweeping changes final ci
+@
+text
+@#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX 512
+
+/* Signal Handler for SIGINT */
+void sigintHandler(int sig_num)
+{
+    	/* Reset handler to catch SIGINT next time. */
+	signal(SIGINT, sigintHandler);
+	printf("\n Cannot be terminated using Ctrl+C \n>>> ");
+	fflush(stdout);
+}
+
+int main (){
+	char command[MAX+1]; 					/* buffer to hold command */
+	char const *prompt;					/* prompt to be passed */
+	char const *ps1 = getenv("PS1");			/* temporary holder for PS1 */
+
+
+signal(SIGINT, sigintHandler);
+
+	/* print system prompt use PS1 if exists */
+	if (ps1 != NULL){
+		prompt = ps1;
+	}
+	else {
+		prompt = ">>> ";
+	}
+
+	/* main shell loop until exited */
+	while (1){
+		getcmd(prompt, command);
+		runcmd (command);
+	}
+return 0;
+} 								/* end main */
+@
+
+
+1.3
+log
+@cleaned up and added functionality
+@
+text
+@d3 2
+d7 9
+d18 7
+a24 2
+	char const *ps1 = getenv("PS1");
+	char const *prompt;
+d30 1
+a30 1
+	}							/* system prompt */
+d32 1
+a32 2
+/* loop until the user enters a ^D */
+/* The program ends upon receiving ^D */
+@
+
+
+1.2
+log
+@defined sig handler
+@
+text
+@a0 1
+#include "sh.h"
+d3 1
+d5 10
+a14 1
+void sig_handler(int signal); 
+d16 8
+a23 13
+int main( int argc, char **argv, char **envp )
+{
+  /* put signal set up stuff here */
+
+  return sh(argc, argv, envp);
+}
+
+void sig_handler(int sig){
+	printf("\n\nPARENT caught signal [%d]\n\n", sig);
+		if (sig == SIGINT){
+			signal(SIGINT, sig_handler);
+		}
+}
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d14 5
+a18 3
+void sig_handler(int signal)
+{
+  /* define your signal handler */
+a19 1
+
+@

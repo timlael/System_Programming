@@ -1,0 +1,14 @@
+/*Tim M. Lael tmlz5d
+cs2750 e01 */
+
+Compile and run on Delmar
+
+To compile:
+unzip project4.zip
+in a terminal, navigate to the /project4/RCS/build directory and issue make to invoke the Makefile build.
+
+To run:
+from the /project4/RCS/build directory where the executable was just created, issue ./mysh to invoke the shell
+
+To exit:
+Either Ctrl+D or any variation of exit (case insensitive) will exit the shell. Ctrl+C will not exit mysh.
